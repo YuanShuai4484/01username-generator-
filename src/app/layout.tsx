@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/config";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,6 +71,19 @@ export default function RootLayout({
           name="google-site-verification"
           content="Dr6PGoew-ib9xRZkI-664ACu-q_Ai6pKV4r-Hgo-zzw"
         />
+        {/* Google Analytics gtag.js */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-DKFN3Q2F7V"
+        />
+        <Script id="ga-gtag-init">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DKFN3Q2F7V');
+          `}
+        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 text-slate-900`}
